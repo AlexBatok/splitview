@@ -1,0 +1,186 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #ffffff;
+  --bg-hover: #f3f4f6;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --accent: #2563eb;
+  --accent-subtle: #eff6ff;
+  --pane-fill: #bfdbfe;
+  --pane-stroke: #2563eb;
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1d27;
+    --bg-hover: #272b38;
+    --border: #2d3141;
+    --text: #e8eaed;
+    --text-muted: #8b8fa3;
+    --accent: #4d8ff7;
+    --accent-subtle: #1a2744;
+    --pane-fill: #1e3a5f;
+    --pane-stroke: #4d8ff7;
+  }
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  width: 280px;
+}
+
+.popup {
+  padding: 14px 14px 12px;
+}
+
+/* ── Header ── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.logo h1 {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.undo-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px 4px 7px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.undo-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.undo-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ── Layouts grid ── */
+
+.layouts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.layout-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 4px 7px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  position: relative;
+}
+
+.layout-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.layout-btn:active {
+  transform: scale(0.95);
+}
+
+.layout-btn.last-used::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.layout-btn svg {
+  width: 48px;
+  height: 32px;
+}
+
+.layout-btn svg rect {
+  fill: var(--pane-fill);
+  stroke: var(--pane-stroke);
+  stroke-width: 1.2;
+}
+
+.layout-btn:hover svg rect {
+  fill: var(--accent);
+  fill-opacity: 0.25;
+  stroke: var(--accent);
+}
+
+.layout-btn span {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.layout-btn:hover span {
+  color: var(--accent);
+}
+
+/* ── Footer ── */
+
+.footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: var(--font);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--text);
+}

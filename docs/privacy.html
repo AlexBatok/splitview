@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — SplitView</title>
+  <meta name="description" content="SplitView privacy policy. Zero data collection, no analytics, no tracking.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1117;
+        --card: #1a1d27;
+        --text: #e8eaed;
+        --muted: #8b8fa3;
+        --accent: #4d8ff7;
+        --border: #2d3141;
+      }
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 650;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    p, li {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="index.html" class="back">&larr; Back to SplitView</a>
+
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 6, 2026</p>
+
+    <h2>Overview</h2>
+    <p>SplitView is a browser extension that splits your browser tabs into positioned windows. It collects <strong>zero</strong> user data. No analytics, no tracking, no telemetry, no network requests.</p>
+
+    <h2>Data Collection</h2>
+    <p>SplitView does <strong>not</strong> collect, store, transmit, or share any personal data or browsing information. Specifically:</p>
+    <ul>
+      <li>No browsing history is accessed or recorded</li>
+      <li>No user identifiers are created or stored</li>
+      <li>No cookies are used</li>
+      <li>No analytics or tracking scripts are included</li>
+      <li>No data is sent to any server or third party</li>
+      <li>No remote code is loaded</li>
+    </ul>
+
+    <h2>Local Storage</h2>
+    <p>SplitView stores a single preference locally on your device: the last layout you used (e.g., "50-50" or "grid"). This data:</p>
+    <ul>
+      <li>Never leaves your device</li>
+      <li>Contains no personal information</li>
+      <li>Is automatically cleared when the extension is uninstalled</li>
+    </ul>
+
+    <h2>Permissions</h2>
+    <p>SplitView requests only the permissions necessary for window management:</p>
+    <ul>
+      <li><strong>tabs</strong> — Required to query tab positions when splitting and undoing splits</li>
+      <li><strong>storage</strong> — Required to remember your last layout choice</li>
+      <li><strong>system.display</strong> — Required to detect monitor dimensions for accurate window positioning on multi-monitor setups</li>
+      <li><strong>contextMenus</strong> — Required to add "Open link in split view" and "Split this tab" to the right-click menu</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>SplitView does not integrate with, connect to, or communicate with any third-party services, APIs, or servers.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>If this privacy policy is updated, the changes will be reflected on this page with an updated date. Since SplitView collects no data, meaningful changes are unlikely.</p>
+
+    <h2>Contact</h2>
+    <p>For questions about this privacy policy, please open an issue on the <a href="https://github.com/AlexBatok/splitview/issues" target="_blank">GitHub repository</a>.</p>
+
+    <footer>
+      <p>SplitView &mdash; Side-by-side browsing, perfected.</p>
+    </footer>
+  </div>
+
+</body>
+</html>

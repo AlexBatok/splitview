@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitView — Split Your Browser Screen in One Click</title>
+  <meta name="description" content="Split your browser into perfectly tiled windows. 6 layouts, keyboard shortcuts, multi-monitor support, undo. Works with every website.">
+  <meta property="og:title" content="SplitView — Side-by-Side Browsing, Perfected">
+  <meta property="og:description" content="Split your browser into perfectly tiled windows with one click. 6 layouts, keyboard shortcuts, seamless tiling.">
+  <meta property="og:type" content="website">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --border: #e5e7eb;
+      --radius: 16px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1117;
+        --card: #1a1d27;
+        --text: #e8eaed;
+        --muted: #8b8fa3;
+        --accent: #4d8ff7;
+        --accent-light: #1a2744;
+        --border: #2d3141;
+      }
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 0 48px;
+    }
+
+    .hero-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: var(--accent-light);
+      border-radius: 18px;
+      margin-bottom: 24px;
+    }
+
+    .hero-icon svg { width: 40px; height: 40px; }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: opacity 0.15s;
+    }
+
+    .cta:hover { opacity: 0.9; }
+
+    .cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding: 48px 0;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .feature h3 {
+      font-size: 15px;
+      font-weight: 650;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Layouts showcase */
+    .layouts-section {
+      text-align: center;
+      padding: 32px 0 48px;
+    }
+
+    .layouts-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .layouts-section > p {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .layout-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 8px 12px;
+      text-align: center;
+    }
+
+    .layout-card svg {
+      width: 64px;
+      height: 42px;
+      margin-bottom: 8px;
+    }
+
+    .layout-card svg rect {
+      fill: var(--accent-light);
+      stroke: var(--accent);
+      stroke-width: 1.2;
+    }
+
+    .layout-card span {
+      display: block;
+      font-size: 12px;
+      font-weight: 550;
+      color: var(--muted);
+    }
+
+    /* Shortcuts */
+    .shortcuts {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+
+    .shortcuts h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shortcut-row:last-child { border-bottom: none; }
+
+    .shortcut-row span { font-size: 14px; color: var(--muted); }
+
+    kbd {
+      display: inline-block;
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .donate-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 16px; }
+      .layout-grid { grid-template-columns: repeat(2, 1fr); }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-icon">
+        <svg viewBox="0 0 40 40">
+          <rect x="3" y="5" width="15" height="30" rx="3" fill="#2563eb" opacity="0.85"/>
+          <rect x="22" y="5" width="15" height="30" rx="3" fill="#2563eb" opacity="0.5"/>
+        </svg>
+      </div>
+      <h1>Split your browser<br>in one click</h1>
+      <p>Six instant layouts for side-by-side browsing. Seamless tiling, keyboard shortcuts, multi-monitor support. Works with every website.</p>
+      <a class="cta" href="https://chrome.google.com/webstore" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        Add to Chrome
+      </a>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Seamless Tiling</h3>
+        <p>Zero visible gaps between windows. Automatic shadow border compensation on Windows 10/11.</p>
+      </div>
+      <div class="feature">
+        <h3>Multi-Monitor</h3>
+        <p>Auto-detects which display you're on. Splits stay on your current monitor.</p>
+      </div>
+      <div class="feature">
+        <h3>Instant Undo</h3>
+        <p>One click or Alt+Z restores all windows to their previous size and position.</p>
+      </div>
+      <div class="feature">
+        <h3>Right-Click Split</h3>
+        <p>Right-click any link to open it in split view alongside your current page.</p>
+      </div>
+      <div class="feature">
+        <h3>Keyboard First</h3>
+        <p>Alt+S to split, Alt+Z to undo. Configurable shortcuts for every layout.</p>
+      </div>
+      <div class="feature">
+        <h3>Zero Data</h3>
+        <p>No analytics, no tracking, no network requests. Your browsing stays private.</p>
+      </div>
+    </section>
+
+    <section class="layouts-section">
+      <h2>Six Layouts</h2>
+      <p>Click once, your screen arranges instantly.</p>
+      <div class="layout-grid">
+        <div class="layout-card">
+          <svg viewBox="0 0 48 32"><rect x="1" y="1" width="22" height="30" rx="3"/><rect x="25" y="1" width="22" height="30" rx="3"/></svg>
+          <span>Equal</span>
+        </div>
+        <div class="layout-card">
+          <svg viewBox="0 0 48 32"><rect x="1" y="1" width="30" height="30" rx="3"/><rect x="33" y="1" width="14" height="30" rx="3"/></svg>
+          <span>Focus</span>
+        </div>
+        <div class="layout-card">
+          <svg viewBox="0 0 48 32"><rect x="1" y="1" width="14" height="30" rx="3"/><rect x="17" y="1" width="30" height="30" rx="3"/></svg>
+          <span>Sidebar</span>
+        </div>
+        <div class="layout-card">
+          <svg viewBox="0 0 48 32"><rect x="1" y="1" width="14" height="30" rx="3"/><rect x="17" y="1" width="14" height="30" rx="3"/><rect x="33" y="1" width="14" height="30" rx="3"/></svg>
+          <span>Triple</span>
+        </div>
+        <div class="layout-card">
+          <svg viewBox="0 0 48 32"><rect x="1" y="1" width="46" height="14" rx="3"/><rect x="1" y="17" width="46" height="14" rx="3"/></svg>
+          <span>Stack</span>
+        </div>
+        <div class="layout-card">
+          <svg viewBox="0 0 48 32"><rect x="1" y="1" width="22" height="14" rx="3"/><rect x="25" y="1" width="22" height="14" rx="3"/><rect x="1" y="17" width="22" height="14" rx="3"/><rect x="25" y="17" width="22" height="14" rx="3"/></svg>
+          <span>Grid</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="shortcuts">
+      <h2>Keyboard Shortcuts</h2>
+      <div class="shortcut-row">
+        <span>Split (last used layout)</span>
+        <div><kbd>Alt</kbd> + <kbd>S</kbd></div>
+      </div>
+      <div class="shortcut-row">
+        <span>Undo last split</span>
+        <div><kbd>Alt</kbd> + <kbd>Z</kbd></div>
+      </div>
+      <div class="shortcut-row">
+        <span>Customize all shortcuts</span>
+        <div><kbd>chrome://extensions/shortcuts</kbd></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://github.com/AlexBatok/splitview" target="_blank">GitHub</a>
+      </div>
+      <p>SplitView &mdash; Side-by-side browsing, perfected.</p>
+      <div class="donate-section">
+        <p>Like SplitView? <a href="https://i.bybit.com/21KabK3i" target="_blank">Buy me a coffee</a></p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
