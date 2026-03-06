@@ -185,6 +185,19 @@ body {
   text-align: center;
 }
 
+.footer-shortcuts { margin-bottom: 6px; }
+
+.footer-links {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.footer-link {
+  font-size: 10.5px; color: var(--text-muted); text-decoration: none;
+  cursor: pointer; transition: color 0.12s;
+}
+.footer-link:hover { color: var(--accent); }
+.footer-link .stars { color: #f5a623; font-size: 9.5px; letter-spacing: -1px; }
+.footer-sep { color: var(--border); font-size: 10.5px; }
+
 kbd {
   display: inline-block;
   padding: 1px 5px;

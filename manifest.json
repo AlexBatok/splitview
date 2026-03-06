@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SplitView — Split Screen & Side by Side Tabs for Multi Window Browsing",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Split screen extension — tile browser windows side by side in one click. 6 layouts, multi-monitor, keyboard shortcuts, instant undo.",
   "permissions": ["tabs", "storage", "system.display", "contextMenus"],
   "action": {

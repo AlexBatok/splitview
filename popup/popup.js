@@ -33,3 +33,13 @@ chrome.storage.local.get('splitview', (data) => {
   const btn = document.querySelector(`.layout-btn[data-layout="${last}"]`);
   if (btn) btn.classList.add('last-used');
 });
+
+// Footer links
+document.getElementById('link-rate')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  chrome.tabs.create({ url: `https://chromewebstore.google.com/detail/${chrome.runtime.id}/reviews` });
+});
+document.getElementById('link-coffee')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  chrome.tabs.create({ url: 'https://alexbatok.github.io/splitview/#donate' });
+});

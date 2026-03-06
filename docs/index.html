@@ -254,6 +254,19 @@
       border-top: 1px solid var(--border);
     }
 
+    .crypto-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; margin-top: 8px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .crypto-label { font-weight: 700; font-size: 12px; color: var(--accent); min-width: 32px; }
+    .crypto-row code { font-size: 11px; word-break: break-all; color: var(--muted); flex: 1; }
+    .crypto-copy {
+      border: none; background: transparent; font-size: 15px; cursor: pointer;
+      padding: 2px 6px; border-radius: 6px; color: var(--muted); transition: background 0.15s;
+    }
+    .crypto-copy:hover { background: var(--border); }
+
     @media (max-width: 480px) {
       .hero h1 { font-size: 28px; }
       .hero p { font-size: 16px; }
@@ -360,11 +373,31 @@
         <a href="https://github.com/AlexBatok/splitview" target="_blank">GitHub</a>
       </div>
       <p>SplitView &mdash; Side-by-side browsing, perfected.</p>
-      <div class="donate-section">
-        <p>Like SplitView? <a href="https://i.bybit.com/21KabK3i" target="_blank">Buy me a coffee</a></p>
+      <div id="donate" class="donate-section">
+        <p>Like SplitView? Support development:</p>
+        <div class="crypto-row">
+          <span class="crypto-label">ETH</span>
+          <code>0x7587ce32665485cf9397e22220b586913922f0e8</code>
+          <button class="crypto-copy" data-addr="0x7587ce32665485cf9397e22220b586913922f0e8" title="Copy">&#128203;</button>
+        </div>
+        <div class="crypto-row">
+          <span class="crypto-label">BTC</span>
+          <code>bc1pmy28yzghs8xmp7pf8flaqyswkg6eurx32f9fjuguc9ggmzrw3vmqkg04xf</code>
+          <button class="crypto-copy" data-addr="bc1pmy28yzghs8xmp7pf8flaqyswkg6eurx32f9fjuguc9ggmzrw3vmqkg04xf" title="Copy">&#128203;</button>
+        </div>
       </div>
     </footer>
   </div>
 
+<script>
+document.querySelectorAll('.crypto-copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(btn.getAttribute('data-addr')).then(() => {
+      btn.textContent = '✓';
+      setTimeout(() => { btn.innerHTML = '&#128203;'; }, 2000);
+    });
+  });
+});
+</script>
 </body>
 </html>
