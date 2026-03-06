@@ -34,6 +34,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      min-height: 100dvh;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -83,6 +84,13 @@
 
     a:hover { text-decoration: underline; }
 
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    strong { color: var(--text); }
+
     .back {
       display: inline-block;
       margin-bottom: 32px;
@@ -122,7 +130,12 @@
     </ul>
 
     <h2>Local Storage</h2>
-    <p>SplitView stores a single preference locally on your device: the last layout you used (e.g., "50-50" or "grid"). This data:</p>
+    <p>SplitView stores minimal data locally on your device:</p>
+    <ul>
+      <li>Your last chosen layout (e.g., "50-50" or "grid")</li>
+      <li>Temporary undo state (window positions) cleared on browser restart</li>
+    </ul>
+    <p>This data:</p>
     <ul>
       <li>Never leaves your device</li>
       <li>Contains no personal information</li>
@@ -132,7 +145,7 @@
     <h2>Permissions</h2>
     <p>SplitView requests only the permissions necessary for window management:</p>
     <ul>
-      <li><strong>tabs</strong> — Required to query tab positions when splitting and undoing splits</li>
+      <li><strong>tabs</strong> — Required to query window and tab information for accurate positioning when splitting and restoring windows on undo</li>
       <li><strong>storage</strong> — Required to remember your last layout choice</li>
       <li><strong>system.display</strong> — Required to detect monitor dimensions for accurate window positioning on multi-monitor setups</li>
       <li><strong>contextMenus</strong> — Required to add "Open link in split view" and "Split this tab" to the right-click menu</li>
