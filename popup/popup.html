@@ -3,47 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitView</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="popup">
     <header class="header">
       <div class="logo">
-        <svg viewBox="0 0 20 20" width="18" height="18">
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
           <rect x="1" y="2" width="8" height="16" rx="2" fill="var(--accent)" opacity="0.8"/>
           <rect x="11" y="2" width="8" height="16" rx="2" fill="var(--accent)" opacity="0.5"/>
         </svg>
         <h1>SplitView</h1>
       </div>
       <button id="btn-undo" class="undo-btn" disabled title="Undo last split (Alt+Z)">
-        <svg viewBox="0 0 20 20" width="14" height="14"><path d="M4 9h8a4 4 0 0 1 0 8H9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6L4 9l3 3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 9h8a4 4 0 0 1 0 8H9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6L4 9l3 3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Undo
       </button>
     </header>
 
     <section class="layouts">
-      <button class="layout-btn" data-layout="50-50" title="50 / 50 — Alt+S">
-        <svg viewBox="0 0 48 32"><rect x="1" y="1" width="22" height="30" rx="3"/><rect x="25" y="1" width="22" height="30" rx="3"/></svg>
+      <button class="layout-btn" data-layout="50-50" title="50 / 50">
+        <svg viewBox="0 0 48 32" aria-hidden="true"><rect x="1" y="1" width="22" height="30" rx="3"/><rect x="25" y="1" width="22" height="30" rx="3"/></svg>
         <span>Equal</span>
       </button>
       <button class="layout-btn" data-layout="70-30" title="70 / 30">
-        <svg viewBox="0 0 48 32"><rect x="1" y="1" width="30" height="30" rx="3"/><rect x="33" y="1" width="14" height="30" rx="3"/></svg>
+        <svg viewBox="0 0 48 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="3"/><rect x="33" y="1" width="14" height="30" rx="3"/></svg>
         <span>Focus</span>
       </button>
       <button class="layout-btn" data-layout="30-70" title="30 / 70">
-        <svg viewBox="0 0 48 32"><rect x="1" y="1" width="14" height="30" rx="3"/><rect x="17" y="1" width="30" height="30" rx="3"/></svg>
+        <svg viewBox="0 0 48 32" aria-hidden="true"><rect x="1" y="1" width="14" height="30" rx="3"/><rect x="17" y="1" width="30" height="30" rx="3"/></svg>
         <span>Sidebar</span>
       </button>
       <button class="layout-btn" data-layout="33-33-33" title="33 / 33 / 33">
-        <svg viewBox="0 0 48 32"><rect x="1" y="1" width="14" height="30" rx="3"/><rect x="17" y="1" width="14" height="30" rx="3"/><rect x="33" y="1" width="14" height="30" rx="3"/></svg>
+        <svg viewBox="0 0 48 32" aria-hidden="true"><rect x="1" y="1" width="14" height="30" rx="3"/><rect x="17" y="1" width="14" height="30" rx="3"/><rect x="33" y="1" width="14" height="30" rx="3"/></svg>
         <span>Triple</span>
       </button>
       <button class="layout-btn" data-layout="top-bottom" title="Top / Bottom">
-        <svg viewBox="0 0 48 32"><rect x="1" y="1" width="46" height="14" rx="3"/><rect x="1" y="17" width="46" height="14" rx="3"/></svg>
+        <svg viewBox="0 0 48 32" aria-hidden="true"><rect x="1" y="1" width="46" height="14" rx="3"/><rect x="1" y="17" width="46" height="14" rx="3"/></svg>
         <span>Stack</span>
       </button>
       <button class="layout-btn" data-layout="grid" title="2x2 Grid">
-        <svg viewBox="0 0 48 32"><rect x="1" y="1" width="22" height="14" rx="3"/><rect x="25" y="1" width="22" height="14" rx="3"/><rect x="1" y="17" width="22" height="14" rx="3"/><rect x="25" y="17" width="22" height="14" rx="3"/></svg>
+        <svg viewBox="0 0 48 32" aria-hidden="true"><rect x="1" y="1" width="22" height="14" rx="3"/><rect x="25" y="1" width="22" height="14" rx="3"/><rect x="1" y="17" width="22" height="14" rx="3"/><rect x="25" y="17" width="22" height="14" rx="3"/></svg>
         <span>Grid</span>
       </button>
     </section>

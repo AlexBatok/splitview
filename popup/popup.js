@@ -1,8 +1,12 @@
+const VALID_LAYOUTS = ['50-50', '70-30', '30-70', '33-33-33', 'top-bottom', 'grid'];
+
 // Layout buttons
 document.querySelectorAll('.layout-btn').forEach(btn => {
   btn.addEventListener('click', async () => {
     const layout = btn.dataset.layout;
-    chrome.runtime.sendMessage({ action: 'split', layout });
+    try {
+      await chrome.runtime.sendMessage({ action: 'split', layout });
+    } catch {}
     window.close();
   });
 });
@@ -14,8 +18,10 @@ if (undoBtn) {
     if (resp?.canUndo) undoBtn.disabled = false;
   });
 
-  undoBtn.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'undo' });
+  undoBtn.addEventListener('click', async () => {
+    try {
+      await chrome.runtime.sendMessage({ action: 'undo' });
+    } catch {}
     window.close();
   });
 }
@@ -23,7 +29,7 @@ if (undoBtn) {
 // Highlight last used layout
 chrome.storage.local.get('splitview', (data) => {
   const last = data.splitview?.lastLayout;
-  if (!last) return;
+  if (!last || !VALID_LAYOUTS.includes(last)) return;
   const btn = document.querySelector(`.layout-btn[data-layout="${last}"]`);
   if (btn) btn.classList.add('last-used');
 });

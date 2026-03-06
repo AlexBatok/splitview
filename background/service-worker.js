@@ -219,6 +219,11 @@ async function splitTabs(layoutName) {
 // ── Split with a specific link ──
 
 async function splitWithLink(linkUrl, sourceTab) {
+  try {
+    const parsed = new URL(linkUrl);
+    if (!['http:', 'https:'].includes(parsed.protocol)) return;
+  } catch { return; }
+
   const currentWindow = await chrome.windows.getCurrent();
   if (!currentWindow) return;
 

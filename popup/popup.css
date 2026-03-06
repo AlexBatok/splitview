@@ -88,8 +88,14 @@ body {
 }
 
 .undo-btn:disabled {
-  opacity: 0.35;
+  opacity: 0.45;
   cursor: default;
+}
+
+.undo-btn:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 /* ── Layouts grid ── */
@@ -121,6 +127,12 @@ body {
 
 .layout-btn:active {
   transform: scale(0.95);
+}
+
+.layout-btn:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 .layout-btn.last-used::after {
